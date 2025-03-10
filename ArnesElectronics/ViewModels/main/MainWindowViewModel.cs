@@ -6,7 +6,7 @@ namespace ArnesElectronics.ViewModels.main;
 public partial class MainWindowViewModel : ViewModelBase
 {
     [ObservableProperty]
-    private string buttonClickText = "Binding test";
+    private string _buttonClickText = "Binding test";
 
     [RelayCommand]
     private void TestBinding()

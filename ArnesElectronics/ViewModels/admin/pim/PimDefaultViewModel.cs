@@ -6,7 +6,7 @@ namespace ArnesElectronics.ViewModels.admin.pim;
 public partial class PimDefaultViewModel : ViewModelBase
 {
     [ObservableProperty]
-    private string buttonClickText = "Binding test";
+    private string _buttonClickText = "Binding test";
 
     [RelayCommand]
     private void TestBinding()

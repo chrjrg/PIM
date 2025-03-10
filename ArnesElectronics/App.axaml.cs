@@ -10,12 +10,11 @@ using ArnesElectronics.ViewModels.admin;
 using ArnesElectronics.Views;
 using ArnesElectronics.Views.admin;
 using Avalonia.Controls;
-
 namespace ArnesElectronics;
 
 public partial class App : Application
 {
-    private const string BootWindow = "admin"; // Change to "main" to load the MainWindow instead
+    private const string BootWindow = "admin"; // Change to "admin" or "main" depending on which window and corresponding views you want to load
 
     public override void Initialize()
     {
