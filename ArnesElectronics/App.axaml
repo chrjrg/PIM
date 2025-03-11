@@ -9,6 +9,14 @@
              <Application.Resources>
                  <converters:BoolToVisibleConverter x:Key="BoolToVisibleConverter"/>
                  <converters:BoolToHiddenConverter x:Key="BoolToHiddenConverter"/>
+                 
+                 <!-- Set standardized dynamic colors -->
+                 <Color x:Key="DarkContentBackgroundColor">#2d2d2d</Color>
+                 <Color x:Key="DarkPaneBackgroundColor">#1e1e1e</Color>
+
+                 <!-- Define Brushes -->
+                 <SolidColorBrush x:Key="DarkContentBackgroundBrush" Color="{DynamicResource DarkContentBackgroundColor}" />
+                 <SolidColorBrush x:Key="DarkPaneBackgroundBrush" Color="{DynamicResource DarkPaneBackgroundColor}" />
              </Application.Resources>
              <Application.DataTemplates>
                  <local:ViewLocator/>
