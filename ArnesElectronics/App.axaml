@@ -10,20 +10,30 @@
                  <converters:BoolToVisibleConverter x:Key="BoolToVisibleConverter"/>
                  <converters:BoolToHiddenConverter x:Key="BoolToHiddenConverter"/>
                  
-                 <!-- Set standardized dynamic colors -->
-                 <Color x:Key="DarkContentBackgroundColor">#2d2d2d</Color>
-                 <Color x:Key="DarkPaneBackgroundColor">#1e1e1e</Color>
-
-                 <!-- Define Brushes -->
-                 <SolidColorBrush x:Key="DarkContentBackgroundBrush" Color="{DynamicResource DarkContentBackgroundColor}" />
-                 <SolidColorBrush x:Key="DarkPaneBackgroundBrush" Color="{DynamicResource DarkPaneBackgroundColor}" />
+                 <!-- Set standardized dynamic colors  -->
+                 <!-- Light mode -->
+                 <Color x:Key="Black">#000000</Color>
+                 <Color x:Key="DarkGrey">#2d2d2d</Color>
+                 <Color x:Key="DarkerGrey">#1e1e1e</Color>
+                 
+                 <SolidColorBrush x:Key="LightTextBrush" Color="{DynamicResource Black}" />
+                 <SolidColorBrush x:Key="DarkContentBackgroundBrush" Color="{DynamicResource DarkGrey}" />
+                 <SolidColorBrush x:Key="DarkPaneBackgroundBrush" Color="{DynamicResource DarkerGrey}" />
+                 <!-- Dark mode -->
+                 <Color x:Key="White">#FFFFFF</Color>
+                 <Color x:Key="LightGrey">#e0e0e0</Color>
+                
+                 <SolidColorBrush x:Key="DarkTextBrush" Color="{DynamicResource White}" />
+                 <SolidColorBrush x:Key="LightContentBackgroundBrush" Color="{DynamicResource LightGrey}" />
+                 <SolidColorBrush x:Key="LightPaneBackgroundBrush" Color="{DynamicResource White}" />
+                 
              </Application.Resources>
              <Application.DataTemplates>
                  <local:ViewLocator/>
              </Application.DataTemplates>
-  
     <Application.Styles>
         <FluentTheme />
         <StyleInclude Source="avares://ArnesElectronics/Assets/Icons.axaml" />
+        <StyleInclude Source="avares://ArnesElectronics/Styles/Buttons.axaml"/>
     </Application.Styles>
 </Application>

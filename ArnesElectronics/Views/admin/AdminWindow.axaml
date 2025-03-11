@@ -14,12 +14,12 @@
                CompactPaneLength="48"
                DisplayMode="CompactInline"
                OpenPaneLength="200"
-               Background="{DynamicResource DarkPaneBackgroundBrush}"
-               PaneBackground="{DynamicResource DarkPaneBackgroundBrush}">
+               Background="{DynamicResource PaneBackgroundBrush}"
+               PaneBackground="{DynamicResource PaneBackgroundBrush}">
 
         <!-- Sidebar Navigation -->
         <SplitView.Pane>
-            <Grid Background="{DynamicResource DarkPaneBackgroundBrush}">
+            <Grid Background="{DynamicResource PaneBackgroundBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/> <!-- Navigation items -->
                     <RowDefinition Height="*"/>    <!-- Spacer pushes exit button down -->
@@ -41,10 +41,10 @@
                     <TreeView ItemsSource="{Binding Items}" 
                               SelectedItem="{Binding SelectedListItem, Mode=TwoWay}"
                               IsVisible="{Binding IsPaneOpen}"
-                              Background="{DynamicResource DarkPaneBackgroundBrush}">
+                              Background="{DynamicResource PaneBackgroundBrush}">
                         <TreeView.Styles>
                             <Style Selector="TreeViewItem TreeViewItem"> 
-                                <Setter Property="Margin" Value="-23,0,0,0"/>
+                                <Setter Property="Margin" Value="-15,0,0,0"/>
                             </Style>
                         </TreeView.Styles>
 
@@ -62,7 +62,7 @@
                     <ListBox ItemsSource="{Binding Items}" 
                              SelectedItem="{Binding SelectedListItem, Mode=TwoWay}"
                              IsVisible="{Binding IsPaneOpen, Converter={StaticResource BoolToHiddenConverter}}"
-                             Background="{DynamicResource DarkPaneBackgroundBrush}">
+                             Background="{DynamicResource PaneBackgroundBrush}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Spacing="10">
@@ -72,17 +72,22 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </StackPanel>
-
-                <!-- Exit Button -->
-                <Button Grid.Row="2"
-                        HorizontalAlignment="Left"
-                        Width="32"
-                        Height="32"
-                        Margin="8"
-                        Command="{Binding ExitCommand}"
-                        Background="{DynamicResource DarkPaneBackgroundBrush}">
-                    <PathIcon Height="20" Data="{StaticResource ExitIcon}" />
-                </Button>
+                <StackPanel Grid.Row="2">
+                    <!-- Toggle color theme button -->
+                    <ToggleButton Classes="ColorTheme"
+                                  Margin="6"
+                                  Command="{Binding SwitchColorTheme}"/>
+                    
+                    <!-- Exit button -->
+                    <Button HorizontalAlignment="Left"
+                            Width="32"
+                            Height="32"
+                            Margin="8"
+                            Command="{Binding ExitCommand}"
+                            Background="{DynamicResource PaneBackgroundBrush}">
+                        <PathIcon Height="20" Data="{StaticResource ExitIcon}" />
+                    </Button>
+                </StackPanel>
             </Grid>
         </SplitView.Pane>
 
@@ -95,7 +100,7 @@
                 </Grid.RowDefinitions>
                 <Border Grid.Row="1"
                         CornerRadius="12"
-                        Background="{DynamicResource DarkContentBackgroundBrush}">
+                        Background="{DynamicResource ContentBackgroundBrush}">
                     <ContentControl Content="{Binding CurrentPage}" />
                 </Border>
             </Grid>
