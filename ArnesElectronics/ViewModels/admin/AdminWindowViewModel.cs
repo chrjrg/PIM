@@ -2,6 +2,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
+using ArnesElectronics.Services;
 using ArnesElectronics.ViewModels.admin.dam;
 using ArnesElectronics.ViewModels.admin.oms;
 using ArnesElectronics.ViewModels.admin.pim;
@@ -88,10 +89,12 @@ public partial class AdminWindowViewModel : ViewModelBase
     }
     
     public ICommand ExitCommand { get; }
+    public ICommand SwitchColorTheme { get; }
 
     public AdminWindowViewModel()
     {
         ExitCommand = new RelayCommand(ExitApplication);
+        SwitchColorTheme = new RelayCommand(ToggleOnClick);
     }
 
     private void ExitApplication()
@@ -101,6 +104,13 @@ public partial class AdminWindowViewModel : ViewModelBase
             desktop.Shutdown();
         }
     }
+    
+    
+    private void ToggleOnClick()
+    {
+        ThemeManager.ToggleTheme();
+    }
+    
 }
 
 public partial class ListItemTemplate : ViewModelBase

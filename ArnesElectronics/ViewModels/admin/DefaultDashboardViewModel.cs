@@ -1,3 +1,4 @@
+using ArnesElectronics.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -12,5 +13,6 @@ public partial class DefaultDashboardViewModel : ViewModelBase
     private void TestBinding()
     {
         ButtonClickText = "Binding Works!";
+        ThemeManager.ToggleTheme();
     }
 }

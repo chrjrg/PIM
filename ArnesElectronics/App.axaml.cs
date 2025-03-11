@@ -4,6 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
+using ArnesElectronics.Services;
 using Avalonia.Markup.Xaml;
 using ArnesElectronics.ViewModels;
 using ArnesElectronics.ViewModels.admin;
@@ -48,6 +49,7 @@ public partial class App : Application
         }
 
         base.OnFrameworkInitializationCompleted();
+        ThemeManager.ApplyTheme(true);
     }
 
     private void DisableAvaloniaDataAnnotationValidation()
