@@ -30,6 +30,7 @@ namespace ArnesElectronics.Services
             resources["TextColorBrush"] = resources[isDark ? "DarkTextBrush" : "LightTextBrush"];
             resources["ContentBackgroundBrush"] = resources[isDark ? "DarkContentBackgroundBrush" : "LightContentBackgroundBrush"];
             resources["PaneBackgroundBrush"] = resources[isDark ? "DarkPaneBackgroundBrush" : "LightPaneBackgroundBrush"];
+            resources["HighlightBackgroundBrush"] = resources[isDark ? "LightPaneBackgroundBrush" : "DarkPaneBackgroundBrush"];
         }
 
     }

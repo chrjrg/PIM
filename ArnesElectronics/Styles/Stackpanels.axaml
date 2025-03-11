@@ -1,0 +1,24 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <!-- StackPanel Icon Button -->
+    <Style Selector="StackPanel.IconButton">
+        <Setter Property="Orientation" Value="Horizontal"></Setter>
+        <Setter Property="Spacing" Value="10"></Setter>
+    </Style>
+    
+    <Style Selector="StackPanel.IconButton Label">
+        <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+        <Setter Property="Padding" Value="0 0 0 0"></Setter>
+    </Style>
+    
+    <Style Selector="StackPanel.IconButton PathIcon">
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+</Styles>
