@@ -14,80 +14,79 @@
                CompactPaneLength="48"
                DisplayMode="CompactInline"
                OpenPaneLength="200"
-               Background="#1e1e1e"
-               PaneBackground="#1e1e1e">
+               Background="{DynamicResource DarkPaneBackgroundBrush}"
+               PaneBackground="{DynamicResource DarkPaneBackgroundBrush}">
 
-    <!-- Sidebar Navigation -->
-    <SplitView.Pane>
-        <Grid Background="#1e1e1e">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/> <!-- Navigation items -->
-                <RowDefinition Height="*"/>    <!-- Spacer pushes exit button down -->
-                <RowDefinition Height="Auto"/> <!-- Exit button -->
-            </Grid.RowDefinitions>
+        <!-- Sidebar Navigation -->
+        <SplitView.Pane>
+            <Grid Background="{DynamicResource DarkPaneBackgroundBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/> <!-- Navigation items -->
+                    <RowDefinition Height="*"/>    <!-- Spacer pushes exit button down -->
+                    <RowDefinition Height="Auto"/> <!-- Exit button -->
+                </Grid.RowDefinitions>
 
-            <!-- Top Navigation Items -->
-            <StackPanel Grid.Row="0" Orientation="Vertical" Spacing="5">
-                <!-- Menu Button -->
-                <Button HorizontalAlignment="Left"
+                <!-- Top Navigation Items -->
+                <StackPanel Grid.Row="0" Orientation="Vertical" Spacing="5">
+                    <!-- Menu Button -->
+                    <Button HorizontalAlignment="Left"
+                            Width="32"
+                            Height="32"
+                            Margin="8 8"
+                            Command="{Binding TriggerPaneCommand}">
+                        <PathIcon Height="11" Data="{StaticResource LineHorizontal3Regular}" />
+                    </Button>
+
+                    <!-- Full Menu (TreeView) when Pane is Open -->
+                    <TreeView ItemsSource="{Binding Items}" 
+                              SelectedItem="{Binding SelectedListItem, Mode=TwoWay}"
+                              IsVisible="{Binding IsPaneOpen}"
+                              Background="{DynamicResource DarkPaneBackgroundBrush}">
+                        <TreeView.Styles>
+                            <Style Selector="TreeViewItem TreeViewItem"> 
+                                <Setter Property="Margin" Value="-23,0,0,0"/>
+                            </Style>
+                        </TreeView.Styles>
+
+                        <TreeView.ItemTemplate>
+                            <TreeDataTemplate ItemsSource="{Binding SubItems}">
+                                <StackPanel Orientation="Horizontal" Spacing="9" MinHeight="39">
+                                    <PathIcon Data="{Binding ListItemIcon}" Width="24"/>
+                                    <TextBlock Text="{Binding Label}" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </TreeDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+
+                    <!-- Icon-Only View when Pane is Closed -->
+                    <ListBox ItemsSource="{Binding Items}" 
+                             SelectedItem="{Binding SelectedListItem, Mode=TwoWay}"
+                             IsVisible="{Binding IsPaneOpen, Converter={StaticResource BoolToHiddenConverter}}"
+                             Background="{DynamicResource DarkPaneBackgroundBrush}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <PathIcon Data="{Binding ListItemIcon}" Width="24" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+
+                <!-- Exit Button -->
+                <Button Grid.Row="2"
+                        HorizontalAlignment="Left"
                         Width="32"
                         Height="32"
-                        Margin="8 8"
-                        Command="{Binding TriggerPaneCommand}">
-                    <PathIcon Height="11" Data="{StaticResource LineHorizontal3Regular}" />
+                        Margin="8"
+                        Command="{Binding ExitCommand}"
+                        Background="{DynamicResource DarkPaneBackgroundBrush}">
+                    <PathIcon Height="20" Data="{StaticResource ExitIcon}" />
                 </Button>
+            </Grid>
+        </SplitView.Pane>
 
-                <!-- Full Menu (TreeView) when Pane is Open -->
-                <TreeView ItemsSource="{Binding Items}" 
-                          SelectedItem="{Binding SelectedListItem, Mode=TwoWay}"
-                          IsVisible="{Binding IsPaneOpen}"
-                          Background="#1e1e1e">
-                    <TreeView.Styles>
-                        <Style Selector="TreeViewItem TreeViewItem"> 
-                            <Setter Property="Margin" Value="-23,0,0,0"/>
-                        </Style>
-                    </TreeView.Styles>
-
-                    <TreeView.ItemTemplate>
-                        <TreeDataTemplate ItemsSource="{Binding SubItems}">
-                            <StackPanel Orientation="Horizontal" Spacing="9" MinHeight="39">
-                                <PathIcon Data="{Binding ListItemIcon}" Width="24"/>
-                                <TextBlock Text="{Binding Label}" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </TreeDataTemplate>
-                    </TreeView.ItemTemplate>
-                </TreeView>
-
-                <!-- Icon-Only View when Pane is Closed -->
-                <ListBox ItemsSource="{Binding Items}" 
-                         SelectedItem="{Binding SelectedListItem, Mode=TwoWay}"
-                         IsVisible="{Binding IsPaneOpen, Converter={StaticResource BoolToHiddenConverter}}"
-                         Background="#1e1e1e">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Spacing="10">
-                                <PathIcon Data="{Binding ListItemIcon}" Width="24" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </StackPanel>
-
-            <!-- Exit Button -->
-            <Button Grid.Row="2"
-                    HorizontalAlignment="Left"
-                    Width="32"
-                    Height="32"
-                    Margin="8"
-                    Command="{Binding ExitCommand}"
-                    Background="#1e1e1e">
-                    
-                <PathIcon Height="20" Data="{StaticResource ExitIcon}" />
-            </Button>
-        </Grid>
-    </SplitView.Pane>
-
-    <!-- Main Content Area -->
+        <!-- Main Content Area -->
         <SplitView.Content>
             <Grid>
                 <Grid.RowDefinitions>
@@ -96,10 +95,11 @@
                 </Grid.RowDefinitions>
                 <Border Grid.Row="1"
                         CornerRadius="12"
-                        Background="#2d2d2d">
+                        Background="{DynamicResource DarkContentBackgroundBrush}">
                     <ContentControl Content="{Binding CurrentPage}" />
                 </Border>
             </Grid>
         </SplitView.Content>
     </SplitView>
 </Window>
+
