@@ -1,0 +1,121 @@
+<Styles xmlns="https://github.com/avaloniaui">
+    
+    <Design.PreviewWith>
+        <Border Padding="20" Background="#333333">
+            <!-- Add Controls for Previewer Here -->
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
+                <Button Classes="Transparent">Hello</Button>
+                <ToggleButton Classes="Theme" IsChecked="True">
+                    <Panel>
+                        <PathIcon Name="On" Data="{StaticResource WeatherMoonRegular}"></PathIcon>
+                        <PathIcon Name="Off" Data="{StaticResource WeatherSunnyRegular}"></PathIcon>
+                    </Panel>
+                </ToggleButton>
+                <ToggleButton Classes="ColorTheme"></ToggleButton>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    
+    <Style Selector="Button.Transparent">
+        <Setter Property="FontSize" Value="15"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Padding" Value="3"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <ContentPresenter
+                            FontSize ="{TemplateBinding FontSize}"
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Padding="{TemplateBinding Padding}"
+                            Content="{TemplateBinding Content}"/>
+                        <Border Classes="Highlighter"></Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- Toggle Button Style -->
+    <Style Selector="ToggleButton.ColorTheme">
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="CornerRadius" Value="15"/>
+        <Setter Property="Background" Value="{DynamicResource PaneBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource TextColorBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="🌙" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Checked State -->
+    <Style Selector="ToggleButton.ColorTheme:checked">
+        <Setter Property="Background" Value="{DynamicResource TextColorBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PaneBackgroundBrush}"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="🌞" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style Selector="ToggleButton.Theme">
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Padding" Value="3"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <ContentPresenter
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Padding="{TemplateBinding Padding}"
+                            Content="{TemplateBinding Content}"/>
+                        <Border Classes="Highlighter"></Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style Selector="ToggleButton.Theme PathIcon#On">
+        <Setter Property="IsVisible" Value="False"/>
+    </Style>
+    <Style Selector="ToggleButton.Theme:checked PathIcon#On">
+        <Setter Property="IsVisible" Value="True"/>
+    </Style>
+    <Style Selector="ToggleButton.Theme PathIcon#Off">
+        <Setter Property="IsVisible" Value="True"/>
+    </Style>
+    <Style Selector="ToggleButton.Theme:checked PathIcon#Off">
+        <Setter Property="IsVisible" Value="False"/>
+    </Style>
+</Styles>
+
+
+
+
+

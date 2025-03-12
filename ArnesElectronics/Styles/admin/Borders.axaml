@@ -1,0 +1,19 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <Style Selector="Border.Highlighter">
+        <Setter Property="Opacity" Value="0"></Setter>
+        <Setter Property="CornerRadius" Value="3"></Setter>
+        <Setter Property="Background" Value="{DynamicResource HighlightBackgroundBrush}"></Setter>
+    </Style>
+    
+    <Style Selector="Border.Highlighter:pointerover">
+        <Setter Property="Opacity" Value="0.1"></Setter>
+    </Style>
+</Styles>

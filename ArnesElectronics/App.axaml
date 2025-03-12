@@ -34,6 +34,8 @@
     <Application.Styles>
         <FluentTheme />
         <StyleInclude Source="avares://ArnesElectronics/Assets/Icons.axaml" />
-        <StyleInclude Source="avares://ArnesElectronics/Styles/Buttons.axaml"/>
+        <StyleInclude Source="/Styles/admin/Buttons.axaml"/>
+        <StyleInclude Source="/Styles/admin/pim/Stackpanels.axaml"/>
+        <StyleInclude Source="/Styles/admin/Borders.axaml"/>
     </Application.Styles>
 </Application>
