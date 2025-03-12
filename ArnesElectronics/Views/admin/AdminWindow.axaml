@@ -10,6 +10,12 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="ArnesElectronics">
     
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <pim:AdminWindowViewModel/>
+    </Design.DataContext>
+    
     <SplitView IsPaneOpen="{Binding IsPaneOpen}"
                CompactPaneLength="48"
                DisplayMode="CompactInline"
@@ -19,32 +25,45 @@
 
         <!-- Sidebar Navigation -->
         <SplitView.Pane>
+            <Border Padding="7">
             <Grid Background="{DynamicResource PaneBackgroundBrush}">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/> <!-- Header / Menu Button -->
+                    <RowDefinition Height="15"/> <!-- Filler -->
                     <RowDefinition Height="Auto"/> <!-- Navigation items -->
                     <RowDefinition Height="*"/>    <!-- Spacer pushes exit button down -->
                     <RowDefinition Height="Auto"/> <!-- Exit button -->
                 </Grid.RowDefinitions>
 
                 <!-- Top Navigation Items -->
-                <StackPanel Grid.Row="0" Orientation="Vertical" Spacing="5">
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="5" HorizontalAlignment="Left">
                     <!-- Menu Button -->
-                    <Button HorizontalAlignment="Left"
+                    <Button Classes="Transparent"
+                            HorizontalAlignment="Center"
                             Width="32"
                             Height="32"
-                            Margin="8 8"
                             Command="{Binding TriggerPaneCommand}">
-                        <PathIcon Height="11" Data="{StaticResource LineHorizontal3Regular}" />
+                        <PathIcon Width="16" Data="{StaticResource LineHorizontal3Regular}" />
                     </Button>
-
-                    <!-- Full Menu (TreeView) when Pane is Open -->
+                </StackPanel>
+                
+                <!-- Full Menu (TreeView) when Pane is Open -->
+                <StackPanel Grid.Row="2" Orientation="Vertical" Spacing="5">
                     <TreeView ItemsSource="{Binding Items}" 
                               SelectedItem="{Binding SelectedListItem, Mode=TwoWay}"
                               IsVisible="{Binding IsPaneOpen}"
                               Background="{DynamicResource PaneBackgroundBrush}">
                         <TreeView.Styles>
+                            <Style Selector="TreeViewItem">
+                                <Setter Property="CornerRadius" Value="3"></Setter>
+                            </Style>
                             <Style Selector="TreeViewItem TreeViewItem"> 
-                                <Setter Property="Margin" Value="-15,0,0,0"/>
+                                <Setter Property="Padding" Value="-15 0 0 0"></Setter>
+                                <Setter Property="CornerRadius" Value="3"></Setter>
+                            </Style>
+                            <Style Selector="TreeViewItem TreeViewItem PathIcon">
+                                <Setter Property="Height" Value="9"></Setter>
+                                <Setter Property="Width" Value="9"></Setter>
                             </Style>
                         </TreeView.Styles>
 
@@ -65,30 +84,44 @@
                              Background="{DynamicResource PaneBackgroundBrush}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                <StackPanel Orientation="Vertical" Spacing="1">
                                     <PathIcon Data="{Binding ListItemIcon}" Width="24" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding Label}" FontSize="7" FontWeight="Medium" HorizontalAlignment="Center"></Label>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
+                        <ListBox.Styles>
+                            <Style Selector="ListBoxItem">
+                                <Setter Property="Padding" Value="5 5 5 0"></Setter>
+                                <Setter Property="Margin" Value="0 5 0 0"></Setter>
+                                <Setter Property="CornerRadius" Value="3"></Setter>
+                            </Style>
+                        </ListBox.Styles>
                     </ListBox>
                 </StackPanel>
-                <StackPanel Grid.Row="2">
+                <StackPanel HorizontalAlignment="Left" Grid.Row="4" Spacing="2">
                     <!-- Toggle color theme button -->
                     <ToggleButton Classes="ColorTheme"
-                                  Margin="6"
-                                  Command="{Binding SwitchColorTheme}"/>
+                                  Width="32"
+                                  Height="32"
+                                  IsChecked="True"
+                                  Command="{Binding SwitchColorTheme}">
+                        <Panel>
+                            <PathIcon Name="On" Height="16" Data="{StaticResource WeatherMoonRegular}"></PathIcon>
+                            <PathIcon Name="Off" Height="16" Data="{StaticResource WeatherSunnyRegular}"></PathIcon>
+                        </Panel>
+                    </ToggleButton>
                     
                     <!-- Exit button -->
-                    <Button HorizontalAlignment="Left"
+                    <Button Classes="Transparent"
                             Width="32"
                             Height="32"
-                            Margin="8"
-                            Command="{Binding ExitCommand}"
-                            Background="{DynamicResource PaneBackgroundBrush}">
-                        <PathIcon Height="20" Data="{StaticResource ExitIcon}" />
+                            Command="{Binding ExitCommand}">
+                        <PathIcon Height="16" Data="{StaticResource ExitIcon}" />
                     </Button>
                 </StackPanel>
             </Grid>
+            </Border>
         </SplitView.Pane>
 
         <!-- Main Content Area -->
