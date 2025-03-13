@@ -19,6 +19,7 @@
                     MinHeight="30"
                     FontSize="20"
                     HorizontalAlignment="Center"/>
+            <Button Classes="Outline" FontSize="20" HorizontalAlignment="Center">Outline</Button>
         </StackPanel>
     </StackPanel>
 </UserControl>

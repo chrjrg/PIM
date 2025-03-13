@@ -16,6 +16,9 @@
                  <Color x:Key="DarkGrey">#2d2d2d</Color>
                  <Color x:Key="DarkerGrey">#1e1e1e</Color>
                  
+                 <Color x:Key="AccentColor">#78078c</Color>
+                 <SolidColorBrush x:Key="AccentColorBrush" Color="{DynamicResource AccentColor}"/>
+                 
                  <SolidColorBrush x:Key="LightTextBrush" Color="{DynamicResource Black}" />
                  <SolidColorBrush x:Key="DarkContentBackgroundBrush" Color="{DynamicResource DarkGrey}" />
                  <SolidColorBrush x:Key="DarkPaneBackgroundBrush" Color="{DynamicResource DarkerGrey}" />
@@ -37,5 +40,7 @@
         <StyleInclude Source="/Styles/admin/Buttons.axaml"/>
         <StyleInclude Source="/Styles/admin/pim/Stackpanels.axaml"/>
         <StyleInclude Source="/Styles/admin/Borders.axaml"/>
+        <StyleInclude Source="/Styles/admin/ListBoxes.axaml"/>
+        <StyleInclude Source="/Styles/admin/TreeViews.axaml"/>
     </Application.Styles>
 </Application>
